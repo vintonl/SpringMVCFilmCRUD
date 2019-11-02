@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.database.DatabaseAccessorObject;
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
-
 
 @Controller
 public class FilmController {
@@ -36,26 +36,40 @@ public class FilmController {
 		Film foundFilm = filmDao.findFilmById(filmID);
 		List<Actor> actors = filmDao.findActorsByFilmId(filmID);
 
-		System.out.println("****************************");
-		System.out.println(foundFilm);
-		System.out.println("****************************");
-
 		mv.addObject("film", foundFilm);
 		mv.addObject("actors", actors);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path = "addFilmForm.do", params = {"title", "description", "languageID", "releaseYear"}, method = RequestMethod.GET)
-	public ModelAndView addFilm(String title, String description, int languageID, int release_year) {
+	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.POST)
+	public ModelAndView newState(String title, String description, int language_id, int release_year, RedirectAttributes redir) {
+		Film film = filmDao.createFilm(title, description, language_id, release_year);
 		ModelAndView mv = new ModelAndView();
-		
-		Film newFilm = filmDao.createFilm(title, description, languageID, release_year);
-		
-		mv.addObject("film", newFilm);
-		mv.setViewName("WEB-INF/addFilmForm.jsp");
-		
+		redir.addFlashAttribute("film", film); 
+		mv.setViewName("redirect:filmCreated.do"); 
+		return mv;
+	}
+
+	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET) 
+	public ModelAndView created() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/addFilm.jsp");
 		return mv;
 	}
 
 }
+
+//@RequestMapping(path = "addFilmForm.do", params = { "title", "description", "languageID",
+//"releaseYear" }, method = RequestMethod.GET)
+//public ModelAndView addFilm(String title, String description, int languageID, int release_year) {
+//ModelAndView mv = new ModelAndView();
+//
+//Film newFilm = filmDao.createFilm(title, description, languageID, release_year);
+//
+//mv.addObject("film", newFilm);
+//mv.setViewName("WEB-INF/addFilmForm.jsp");
+//
+//return mv;
+//}
+
