@@ -47,7 +47,7 @@ public class FilmController {
 		Film newFilm = filmDao.createFilm(title, description, languageID, release_year);
 		
 		mv.addObject("film", newFilm);
-		mv.setViewName("WEB-INF/addFilm.jsp");
+		mv.setViewName("WEB-INF/addFilmForm.jsp");
 		
 		return mv;
 	}

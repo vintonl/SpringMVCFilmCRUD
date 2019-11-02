@@ -12,7 +12,7 @@
 
 
 <body>
-	<form:form action="addFilmForm.do" method="POST" modelAttribute="film">
+	<form:form action="addFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Film Title:</form:label>
 		<form:input path="title" />
 		<form:errors path="title" />
@@ -21,10 +21,10 @@
 		<form:input path="description" />
 		<form:errors path="description" />
 		<br />
-		<form:label path="rating">Rating:</form:label>
+<%-- 		<form:label path="rating">Rating:</form:label>
 		<form:input path="rating" />
 		<form:errors path="rating" />
-		<br />
+		<br /> --%>
 		<form:label path="releaseYear">Release Year:</form:label>
 		<form:input path="releaseYear" />
 		<form:errors path="releaseYear" />
@@ -33,7 +33,7 @@
 		<form:input path="languageId" />
 		<form:errors path="languageId" />
 		<br />
-		<form:label path="rentalDuration">Rental Duration:</form:label>
+<%-- 		<form:label path="rentalDuration">Rental Duration:</form:label>
 		<form:input path="rentalDuration" />
 		<form:errors path="rentalDuration" />
 		<br />
@@ -48,7 +48,7 @@
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<form:input path="specialFeatures" />
 		<form:errors path="specialFeatures" />
-		<br />
+		<br /> --%>
 		<input type="submit" value="addFilm" />
 	</form:form>
 </body>
