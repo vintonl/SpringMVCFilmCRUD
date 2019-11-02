@@ -37,7 +37,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "select film.id, film.title, film.description, film.release_year, lang.name, film.rental_duration, film.length, film.rental_rate, film.replacement_cost, film.rating, film.special_features\n"
-					+ "from film\n" + "left join language lang\n" + "on film.language_id = lang.id\n" + "where film.id = ?";
+					+ "from film\n" + "left join language lang\n" + "on film.language_id = lang.id\n"
+					+ "where film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet filmResult = stmt.executeQuery();
@@ -220,14 +221,15 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public Film createFilm(Film film) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "INSERT INTO film (title, description, release_year, language_id)\n" + "VALUES ( ?, ?, ?, ?)";
+			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate,  replacement_cost, rating, special_features)\n"
+					+ "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -236,13 +238,17 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setInt(3, film.getReleaseYear());
 //			stmt.setInt(4, 1);
 			stmt.setInt(4, film.getLanguageID());
-			
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRate());
+			stmt.setDouble(7, film.getReplacementCost());
+			stmt.setString(8, film.getRating());
+			stmt.setString(9, film.getSpecialFeatures());
+
 			System.out.println("********************************************************");
 			System.out.println("********************************************************");
 			System.out.println(stmt);
 			System.out.println("********************************************************");
 
-			
 			int uc = stmt.executeUpdate();
 
 			System.out.println(uc + " film was created.");
