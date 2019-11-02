@@ -19,9 +19,23 @@
 			<td>${film.releaseYear}</td>
 		</tr>
 		<tr>
+			<td>Rating:</td>
+			<td>${film.rating}</td>
+		</tr>
+		<tr>
 			<td>Language:</td>
 			<td>${film.language}</td>
 		</tr>
+		<tr>
+			<td>Film ID:</td>
+			<td>${film.filmId}</td>
+		</tr>
+		<c:forEach var="s" items="${actors}">
+			<tr>
+				<td>${s.firstName}</td>
+				<td>${s.lastName}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>
