@@ -43,17 +43,20 @@
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
 				</tr>
-				<c:forEach var="a" items="${actors}">
-					<tr>
-						<td>${a.firstName}</td>
-						<td>${a.lastName}</td>
-					</tr>
-				</c:forEach>
+				<c:if test="${empty actors }">No actors found</c:if>
+				<c:if test="${not empty actors}">
+					<c:forEach var="a" items="${actors}">
+						<tr>
+							<td>${a.firstName}</td>
+							<td>${a.lastName}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</table>
 		</c:if>
 		<p>
-			<a href="home.do" class="btn btn-secondary" role="button">Back
-				to Home</a>
+			<a href="home.do" class="btn btn-secondary" role="button">Back to
+				Home</a>
 		</p>
 	</div>
 </body>
