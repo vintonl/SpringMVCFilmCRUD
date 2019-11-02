@@ -8,7 +8,8 @@
 <title>Search Film Results</title>
 </head>
 <body>
-	<h1>Title: ${film.title }</h1>
+	<h1>Search Film Results</h1>
+	<h2>Title: ${film.title }</h2>
 	<table>
 		<tr>
 			<td>Film Description:</td>
@@ -30,10 +31,10 @@
 			<td>Film ID:</td>
 			<td>${film.filmId}</td>
 		</tr>
-		<c:forEach var="s" items="${actors}">
+		<c:forEach var="a" items="${actors}">
 			<tr>
-				<td>${s.firstName}</td>
-				<td>${s.lastName}</td>
+				<td>${a.firstName}</td>
+				<td>${a.lastName}</td>
 			</tr>
 		</c:forEach>
 	</table>
