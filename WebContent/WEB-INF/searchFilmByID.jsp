@@ -29,8 +29,8 @@
 					<td>${film.rating}</td>
 				</tr>
 				<tr>
-					<td>Language:</td>
-					<td>${film.language}</td>
+					<td>Language ID:</td>
+					<td>${film.languageID}</td>
 				</tr>
 				<tr>
 					<td>Language ID:</td>

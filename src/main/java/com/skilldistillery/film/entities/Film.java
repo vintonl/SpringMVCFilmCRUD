@@ -240,7 +240,7 @@ public class Film {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Film ID: ").append(filmId).append("\nTitle: ").append(title).append("\nRelease Year: ")
 				.append(releaseYear).append("\nRating: ").append(rating).append("\nDescription: ").append(description)
-				.append("\nLanguage: ").append(language);
+				.append("\nLanguage: ").append(languageID);
 		return builder.toString();
 	}
 
@@ -248,7 +248,7 @@ public class Film {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("FilmId: ").append(filmId).append("\nTitle: ").append(title).append("\nDescription: ")
-				.append(description).append("\nRelease Year: ").append(releaseYear).append("\nLanguage: ").append(language)
+				.append(description).append("\nRelease Year: ").append(releaseYear).append("\nLanguage: ").append(languageID)
 				.append("\nRental Duration: ").append(rentalDuration)
 				.append(" days\nLength: ").append(length).append(" minutes\nRate: $").append(rate).append("\nReplacement Cost: $")
 				.append(replacementCost).append("\nRating: ").append(rating).append("\nSpecial Features: ")

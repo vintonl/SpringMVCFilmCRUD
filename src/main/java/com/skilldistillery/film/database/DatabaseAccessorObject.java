@@ -37,7 +37,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "select film.id, film.title, film.description, film.release_year, lang.name, film.rental_duration, film.length, film.rental_rate, film.replacement_cost, film.rating, film.special_features\n"
-					+ "from film\n" + "left join language lang\n" + "on film.language_id = lang.id\n"
+					+ "from film\n" + "join language lang\n" + "on film.language_id = lang.id\n"
 					+ "where film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
@@ -64,7 +64,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
+		
+		System.out.println("*********************************");
+		System.out.println(film);
+		System.out.println("*********************************");
+		
 		return film;
 	}
 
