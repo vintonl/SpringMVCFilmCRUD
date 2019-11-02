@@ -11,7 +11,7 @@
 <body>
 	<h1>Film Keyword Search Results</h1>
 	<div class="container">
-		<c:out value="${}" />
+		<c:out value="${filmId }" />
 		<c:if test="${empty film.title }">No film found</c:if>
 		<c:if test="${not empty film }">
 			<h2>Title: ${film.title }</h2>
