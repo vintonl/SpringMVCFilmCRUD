@@ -12,7 +12,7 @@
 
 
 <body>
-	<form:form action="addFilm.do" method="POST" modelAttribute="film">
+	<form:form action="addFilmForm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Film Title:</form:label>
 		<form:input path="title" />
 		<form:errors path="title" />
