@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Film</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
 <form:option value="5">French</form:option>
 <form:option value="6">German</form:option>
 </form:select>
-<form:label path="rentalDuration">RentalDuration:</form:label>
+<%-- <form:label path="rentalDuration">RentalDuration:</form:label>
 <form:input path="rentalDuration"/>
 <form:errors path="rentalDuration"/>
 <br/>
@@ -48,7 +48,7 @@
 <br/>
 <form:select path="specialFeatures">SpecialFeatures:
 </form:select>
-<br/>
+<br/> --%>
 <input type="submit"value="Submit"/>
 </form:form>
 </body>
