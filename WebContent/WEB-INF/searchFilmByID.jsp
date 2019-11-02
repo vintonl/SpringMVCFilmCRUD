@@ -15,11 +15,6 @@
 		<br>
 		<c:if test="${empty film.title }">No film found</c:if>
 		<c:if test="${not empty film }">
-			<%-- <ul>
-			<c:forEach var="item" items="${stocks}">
-				<li>${item.symbol} ${item.name } <fmt:formatNumber type="currency" value="${item.price }"/></li>
-			</c:forEach>
-			</ul> --%>
 			<h2>Title: ${film.title }</h2>
 			<table>
 				<tr>
@@ -42,15 +37,11 @@
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
 				</tr>
-				<c:if test="${empty film.actors }">No actors found</c:if>
-				<c:if test="${not empty film.actors}">
-					<c:forEach var="a" items="${actors}">
-						<tr>
-							<td>${a.firstName}</td>
-							<td>${a.lastName}</td>
-						</tr>
-					</c:forEach>
-				</c:if>
+				<tr>
+					<td>Actors:</td>
+					<td><c:if test="${empty film.actors }">No actors found</c:if>
+						<c:if test="${not empty actors}">${actors}</c:if></td>
+				</tr>
 			</table>
 		</c:if>
 		<p>
