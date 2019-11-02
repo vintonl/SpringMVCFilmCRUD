@@ -22,13 +22,13 @@
 <form:input path="releaseYear"/>
 <form:errors path="releaseYear"/>
 <br/>
-<form:select path="languageId">Language:
-<form:option value="1">English</form:option>
-<form:option value="2">Italian</form:option>
-<form:option value="3">Japanese</form:option>
-<form:option value="4">Mandarin</form:option>
-<form:option value="5">French</form:option>
-<form:option value="6">German</form:option>
+<form:select path="languageID">Language:
+<form:option value="1" >English</form:option>
+<form:option value="2" >Italian</form:option>
+<form:option value="3" >Japanese</form:option>
+<form:option value="4" >Mandarin</form:option>
+<form:option value="5" >French</form:option>
+<form:option value="6" >German</form:option>
 </form:select>
 <form:label path="rentalDuration">RentalDuration:</form:label>
 <form:input path="rentalDuration"/>
