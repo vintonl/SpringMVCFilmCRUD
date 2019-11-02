@@ -39,10 +39,6 @@ public class FilmController {
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
-<<<<<<< HEAD
-	
-	
-=======
 
 	@RequestMapping(path = "addFilm.do", params = "title, description, languageID, releaseYear", method = RequestMethod.GET)
 	public ModelAndView addFilm(String title, String description, int languageID, int release_year) {
@@ -56,5 +52,4 @@ public class FilmController {
 		return mv;
 	}
 
->>>>>>> 87a2b41e20a9c5f869233bbc2f613755f193cb98
 }
