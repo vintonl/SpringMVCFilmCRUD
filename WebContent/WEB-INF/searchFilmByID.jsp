@@ -43,8 +43,8 @@
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
 				</tr>
-				<c:if test="${empty actors }">No actors found</c:if>
-				<c:if test="${not empty actors}">
+				<c:if test="${empty film.actors }">No actors found</c:if>
+				<c:if test="${not empty film.actors}">
 					<c:forEach var="a" items="${actors}">
 						<tr>
 							<td>${a.firstName}</td>
