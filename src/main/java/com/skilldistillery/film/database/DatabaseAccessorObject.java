@@ -37,8 +37,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "select film.id, film.title, film.description, film.release_year, lang.name, film.rental_duration, film.length, film.rental_rate, film.replacement_cost, film.rating, film.special_features\n"
-					+ "from film\n" + "join language lang\n" + "on film.language_id = lang.id\n"
-					+ "where film.id = ?";
+					+ "from film\n" + "join language lang\n" + "on film.language_id = lang.id\n" + "where film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet filmResult = stmt.executeQuery();
@@ -64,12 +63,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		System.out.println("*********************************");
 		System.out.println(film);
 		System.out.println("*********************************");
-		
+
 		return film;
 	}
 
@@ -241,8 +239,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
-			stmt.setInt(4, 1);
-//			stmt.setInt(4, film.getLanguageID());
+			stmt.setInt(4, film.getLanguageID());
 			stmt.setInt(5, film.getRentalDuration());
 			stmt.setDouble(6, film.getRate());
 			stmt.setInt(7, film.getLength());
