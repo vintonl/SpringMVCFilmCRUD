@@ -64,10 +64,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			e.printStackTrace();
 		}
 
-		System.out.println("*********************************");
-		System.out.println(film);
-		System.out.println("*********************************");
-
 		return film;
 	}
 
@@ -247,11 +243,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
 
-			System.out.println("********************************************************");
-			System.out.println("********************************************************");
-			System.out.println(stmt);
-			System.out.println("********************************************************");
-
 			int uc = stmt.executeUpdate();
 
 			System.out.println(uc + " film was created.");
@@ -259,8 +250,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet keys = stmt.getGeneratedKeys();
 
 			if (keys.next()) {
-//				key = keys.getInt(1);
-//				System.out.println("New film ID: " + keys.getInt(1));
 				int newFilmID = keys.getInt(1);
 				film.setFilmId(newFilmID);
 			}
