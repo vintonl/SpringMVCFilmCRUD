@@ -33,6 +33,10 @@
 					<td>${film.languageID}</td>
 				</tr>
 				<tr>
+					<td>Language ID:</td>
+					<td>${film.languageID}</td>
+				</tr>
+				<tr>
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
 				</tr>
