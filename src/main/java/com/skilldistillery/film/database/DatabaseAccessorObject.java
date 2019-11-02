@@ -290,14 +290,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public Film createFilm(Film film) {
 		Connection conn = null;
 		int key = 0;
-
+//		Film newFilm = null;
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			conn.setAutoCommit(false); // START TRANSACTION
 			String sql = "INSERT INTO film (title, description, release_year, language_id)\n" + "VALUES ( ?, ?, ?, ?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
+	
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.database.DatabaseAccessorObject;
 import com.skilldistillery.film.entities.Actor;
@@ -42,21 +41,30 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.POST)
-	public ModelAndView newFilm(Film film, RedirectAttributes redir) {
-		filmDao.createFilm(film);
+	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.GET)
+	public ModelAndView newFilm() {
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("film", film); 
-		mv.setViewName("redirect:filmCreated.do"); 
+		mv.setViewName("WEB-INF/addFilmForm.html"); 
+		return mv;
+	}
+	
+	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.POST)
+	public ModelAndView newFilm(Film film) {
+		Film newFilm = filmDao.createFilm(film);
+		int filmID = newFilm.getFilmId();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("film", newFilm); 
+		doSearch(filmID);
+		mv.setViewName("WEB-INF/searchFilmByID.jsp"); 
 		return mv;
 	}
 
-	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET) 
-	public ModelAndView created() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/addFilm.jsp");
-		return mv;
-	}
+//	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET) 
+//	public ModelAndView created() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("WEB-INF/addFilm.jsp");
+//		return mv;
+//	}
 
 }
 
