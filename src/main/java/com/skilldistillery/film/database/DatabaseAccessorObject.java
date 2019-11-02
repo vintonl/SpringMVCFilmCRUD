@@ -37,7 +37,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "select film.id, film.title, film.description, film.release_year, lang.name, film.rental_duration, film.length, film.rental_rate, film.replacement_cost, film.rating, film.special_features\n"
-					+ "from film\n" + "join language lang\n" + "on film.language_id = lang.id\n" + "where film.id = ?";
+					+ "from film\n" + "left join language lang\n" + "on film.language_id = lang.id\n" + "where film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet filmResult = stmt.executeQuery();
@@ -197,72 +197,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return films;
 	}
 
-	@Override
-	public Film createFilm(String title, String description, int language_id, int release_year) {
-		Connection conn = null;
-		Film film = null;
-		int key = 0;
-
-		try {
-			conn = DriverManager.getConnection(URL, USER, PASS);
-			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "INSERT INTO film (title, description, release_year, language_id)\n" + "VALUES ( ?, ?, ?, ?)";
-
-			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-//			String title = getStringInput(input, "Enter title: ");
-//			String description = getStringInput(input, "Enter description: ");
-//
-//			int release_year = getIntInput(input, "Enter release year: ");
-//			int language_id = getIntInput(input, "Enter language id (1-6): ");
-
-			stmt.setString(1, title);
-			stmt.setString(2, description);
-			stmt.setInt(3, release_year);
-			stmt.setInt(4, language_id);
-
-			int uc = stmt.executeUpdate();
-
-			System.out.println(uc + " film was created.");
-
-			ResultSet keys = stmt.getGeneratedKeys();
-
-			if (keys.next()) {
-				key = keys.getInt(1);
-				System.out.println("New film ID: " + keys.getInt(1));
-			}
-
-			conn.commit(); // COMMIT TRANSACTION
-
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-			if (conn != null) {
-				try {
-					conn.rollback();
-				} catch (SQLException sqle2) {
-					System.err.println("Error trying to rollback");
-				}
-			}
-			throw new RuntimeException("Error inserting film " + film);
-		}
-
-		return findFilmById(key);
-	}
-
-//	private int getIntInput(Scanner input, String question) {
-//		System.out.println(question);
-//		int inputInt = input.nextInt();
-//
-//		return inputInt;
-//	}
-//
-//	private String getStringInput(Scanner input, String question) {
-//		System.out.println(question);
-//		String inputStr = input.nextLine();
-//
-//		return inputStr;
-//	}
-
 	public boolean deleteFilm(Film film) {
 		Connection conn = null;
 		try {
@@ -286,23 +220,29 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
-
+	
+	@Override
 	public Film createFilm(Film film) {
 		Connection conn = null;
-		int key = 0;
-//		Film newFilm = null;
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			conn.setAutoCommit(false); // START TRANSACTION
 			String sql = "INSERT INTO film (title, description, release_year, language_id)\n" + "VALUES ( ?, ?, ?, ?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-	
+
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
+//			stmt.setInt(4, 1);
 			stmt.setInt(4, film.getLanguageID());
+			
+			System.out.println("********************************************************");
+			System.out.println("********************************************************");
+			System.out.println(stmt);
+			System.out.println("********************************************************");
 
+			
 			int uc = stmt.executeUpdate();
 
 			System.out.println(uc + " film was created.");
@@ -310,8 +250,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet keys = stmt.getGeneratedKeys();
 
 			if (keys.next()) {
-				key = keys.getInt(1);
-				System.out.println("New film ID: " + keys.getInt(1));
+//				key = keys.getInt(1);
+//				System.out.println("New film ID: " + keys.getInt(1));
+				int newFilmID = keys.getInt(1);
+				film.setFilmId(newFilmID);
 			}
 
 			conn.commit(); // COMMIT TRANSACTION
@@ -328,8 +270,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			throw new RuntimeException("Error inserting film " + film);
 		}
 
-		return findFilmById(key);
-		
+		return film;
+
 	}
 
 }

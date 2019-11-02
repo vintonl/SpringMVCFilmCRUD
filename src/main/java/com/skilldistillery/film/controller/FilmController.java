@@ -44,17 +44,15 @@ public class FilmController {
 	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.GET)
 	public ModelAndView newFilm() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/addFilmForm.html"); 
+		mv.setViewName("WEB-INF/addFilmForm.jsp"); 
 		return mv;
 	}
 	
 	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.POST)
 	public ModelAndView newFilm(Film film) {
 		Film newFilm = filmDao.createFilm(film);
-		int filmID = newFilm.getFilmId();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("film", newFilm); 
-		doSearch(filmID);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp"); 
 		return mv;
 	}

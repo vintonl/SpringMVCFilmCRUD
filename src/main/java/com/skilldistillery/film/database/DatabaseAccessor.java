@@ -19,10 +19,6 @@ public interface DatabaseAccessor {
 
 	public List<Film> findFilmsByActorId(int actorId);
 	
-//	public Film createFilm(Scanner input);
-
-	boolean deleteFilm(Film film);
-
-	Film createFilm(String title, String description, int language_id, int release_year);
+	public Film createFilm(Film film);
 
 }
