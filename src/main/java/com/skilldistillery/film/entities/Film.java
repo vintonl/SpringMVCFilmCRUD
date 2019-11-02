@@ -240,7 +240,8 @@ public class Film {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Film ID: ").append(filmId).append("\nTitle: ").append(title).append("\nRelease Year: ")
 				.append(releaseYear).append("\nRating: ").append(rating).append("\nDescription: ").append(description)
-				.append("\nLanguage: ").append(languageID);
+				.append("\nLanguage: ").append(languageID).append("\nSpecial Features: ")
+				.append(specialFeatures);
 		return builder.toString();
 	}
 
