@@ -44,6 +44,10 @@
 			</table>
 		</c:if>
 		<p>
+			<a href="deleteFilm.do" class="btn btn-secondary" role="button">(Delete this film)</a>
+		</p>
+		</br>
+		<p>
 			<a href="home.do" class="btn btn-secondary" role="button">Back to
 				Home</a>
 		</p>
