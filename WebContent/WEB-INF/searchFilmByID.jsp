@@ -28,10 +28,20 @@
 					<td>Rating:</td>
 					<td>${film.rating}</td>
 				</tr>
-				<tr>
-					<td>Language ID:</td>
-					<td>${film.languageID}</td>
-				</tr>
+				<c:choose>
+					<c:when test="${film.languageID eq 0 }">
+						<tr>
+							<td>Language:</td>
+							<td>${film.language}</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td>Language ID:</td>
+							<td>${film.languageID}</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 				<tr>
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
