@@ -46,13 +46,13 @@
 <form:input path="rating"/>
 <form:errors path="rating"/>
 <br/>
-<form:select path="specialFeatures">SpecialFeatures:
+<%-- <form:select path="specialFeatures">SpecialFeatures:
 <form:option value=“Trailers”>Trailers</form:option>
            <form:option value="Commentaries" >Commentaries</form:option>
            <form:option value="DeletedScenes" >Deleted Scenes</form:option>
            <form:option value="BehindTheScenes" >Behind the Scenes</form:option>
            <form:option value=“None”>None</form:option>
-</form:select>
+</form:select> --%>
 <br/>
 <input type="submit"value="Submit"/>
 </form:form>
