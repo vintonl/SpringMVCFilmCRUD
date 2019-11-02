@@ -31,14 +31,6 @@ public class FilmController {
 
 		Film foundFilm = filmDao.findFilmById(filmID);
 
-//		if (foundFilm == null) {
-//			errors.rejectValue("film", "film.error", "Film not found");
-//		}
-
-//		if (errors.getErrorCount() != 0) {
-//			mv.setViewName("WEB-INF/searchFilmByID.do"); // TODO not sure
-//			return mv;
-//		}
 		System.out.println("****************************");
 		System.out.println(foundFilm);
 		System.out.println("****************************");
@@ -47,4 +39,6 @@ public class FilmController {
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
+	
+	
 }
