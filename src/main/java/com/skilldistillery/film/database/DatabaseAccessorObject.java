@@ -287,4 +287,49 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return true;
 	}
 
+	public Film createFilm(Film film) {
+		Connection conn = null;
+		int key = 0;
+
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "INSERT INTO film (title, description, release_year, language_id)\n" + "VALUES ( ?, ?, ?, ?)";
+
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, film.getLanguageID());
+
+			int uc = stmt.executeUpdate();
+
+			System.out.println(uc + " film was created.");
+
+			ResultSet keys = stmt.getGeneratedKeys();
+
+			if (keys.next()) {
+				key = keys.getInt(1);
+				System.out.println("New film ID: " + keys.getInt(1));
+			}
+
+			conn.commit(); // COMMIT TRANSACTION
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			throw new RuntimeException("Error inserting film " + film);
+		}
+
+		return findFilmById(key);
+		
+	}
+
 }
