@@ -197,7 +197,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	@Override
-	public Film createFilm(Scanner input) {
+	public Film createFilm(String title, String description, int language_id, int release_year) {
 		Connection conn = null;
 		Film film = null;
 		int key = 0;
@@ -209,11 +209,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-			String title = getStringInput(input, "Enter title: ");
-			String description = getStringInput(input, "Enter description: ");
-
-			int release_year = getIntInput(input, "Enter release year: ");
-			int language_id = getIntInput(input, "Enter language id (1-6): ");
+//			String title = getStringInput(input, "Enter title: ");
+//			String description = getStringInput(input, "Enter description: ");
+//
+//			int release_year = getIntInput(input, "Enter release year: ");
+//			int language_id = getIntInput(input, "Enter language id (1-6): ");
 
 			stmt.setString(1, title);
 			stmt.setString(2, description);
@@ -248,19 +248,19 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return findFilmById(key);
 	}
 
-	private int getIntInput(Scanner input, String question) {
-		System.out.println(question);
-		int inputInt = input.nextInt();
-
-		return inputInt;
-	}
-
-	private String getStringInput(Scanner input, String question) {
-		System.out.println(question);
-		String inputStr = input.nextLine();
-
-		return inputStr;
-	}
+//	private int getIntInput(Scanner input, String question) {
+//		System.out.println(question);
+//		int inputInt = input.nextInt();
+//
+//		return inputInt;
+//	}
+//
+//	private String getStringInput(Scanner input, String question) {
+//		System.out.println(question);
+//		String inputStr = input.nextLine();
+//
+//		return inputStr;
+//	}
 
 	public boolean deleteFilm(Film film) {
 		Connection conn = null;
