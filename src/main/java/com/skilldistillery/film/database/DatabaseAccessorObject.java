@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
 
@@ -18,13 +17,14 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class DatabaseAccessorObject implements DatabaseAccessor {
 
-//	{
-//		try {
-//			Class.forName("com.mysql.jbdc.Driver");
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+//	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 //	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
 	private static final String USER = "student";
@@ -34,7 +34,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public Film findFilmById(int filmId) {
 		Film film = null;
 
-		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);) {
+		try {
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "select film.id, film.title, film.description, film.release_year, lang.name, film.rental_duration, film.length, film.rental_rate, film.replacement_cost, film.rating, film.special_features\n"
 					+ "from film\n" + "join language lang\n" + "on film.language_id = lang.id\n" + "where film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
