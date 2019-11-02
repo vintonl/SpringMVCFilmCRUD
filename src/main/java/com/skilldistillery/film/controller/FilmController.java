@@ -2,6 +2,8 @@ package com.skilldistillery.film.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,14 +44,14 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.GET)
-	public ModelAndView newFilm() {
+	public ModelAndView newFilmForm(@Valid Film film) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/addFilmForm.jsp"); 
+		mv.setViewName("WEB-INF/addFilmForm.jsp");
 		return mv;
 	}
 	
-	@RequestMapping(path = "addFilmForm.do", method = RequestMethod.POST)
-	public ModelAndView newFilm(Film film) {
+	@RequestMapping(path = "addFilmNew.do", method = RequestMethod.POST)
+	public ModelAndView newFilm(@Valid Film film) {
 		Film newFilm = filmDao.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("film", newFilm); 

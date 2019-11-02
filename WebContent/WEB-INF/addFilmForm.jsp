@@ -9,7 +9,7 @@
 <title>Add Film</title>
 </head>
 <body>
-<form:form action="addFilmForm.do" method="POST" modelAttribute="film">
+<form:form action="addFilmNew.do" method="POST" modelAttribute="film">
 <form:label path="title">Title:</form:label>
 <form:input path="title"/>
 <form:errors path="title"/>
@@ -30,7 +30,7 @@
 <form:option value="5">French</form:option>
 <form:option value="6">German</form:option>
 </form:select>
-<%-- <form:label path="rentalDuration">RentalDuration:</form:label>
+<form:label path="rentalDuration">RentalDuration:</form:label>
 <form:input path="rentalDuration"/>
 <form:errors path="rentalDuration"/>
 <br/>
@@ -48,7 +48,7 @@
 <br/>
 <form:select path="specialFeatures">SpecialFeatures:
 </form:select>
-<br/> --%>
+<br/>
 <input type="submit"value="Submit"/>
 </form:form>
 </body>
