@@ -325,7 +325,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 //		return true;
 //	}
 
-	public boolean saveFilmAllFields(Film film) {
+	public Film saveFilmAllFields(int filmID, Film film) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
@@ -336,6 +336,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					+ "WHERE film.id = ?;";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			
+			
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -346,8 +349,13 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			stmt.setInt(11, film.getFilmId());
+			stmt.setInt(11, filmID);
 
+			System.out.println("*****************************************************************");
+			System.out.println(stmt);
+			System.out.println(film.toString());
+			
+			
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
 				conn.commit(); // COMMIT TRANSACTION
@@ -361,9 +369,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			return false;
+			return film;
 		}
-		return true;
+		return film;
 	}
 
 }

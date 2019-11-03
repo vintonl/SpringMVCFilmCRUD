@@ -85,13 +85,13 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "saveFilmFields.do", method = RequestMethod.POST)
-	public ModelAndView saveFilmFields(@Valid Film film) {
+	@RequestMapping(path = "saveFilmFields.do",params = "filmID", method = RequestMethod.POST)
+	public ModelAndView saveFilmFields(@RequestParam("filmID") int filmID, @Valid Film film) {
 		ModelAndView mv = new ModelAndView();
 		
-		boolean updateFilm = filmDao.saveFilmAllFields(film);
+		Film updatedFilm = filmDao.saveFilmAllFields(filmID, film);
 		
-		mv.addObject("film", updateFilm);
+		mv.addObject("film", updatedFilm);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}

@@ -18,9 +18,13 @@
 		<c:if test="${empty film.title }">No film found</c:if>
 		<c:if test="${not empty film }">
 
-			<%-- <form action="saveFilmFields.do" method="POST" modelAttribute="film"> --%>
 			<form:form action="saveFilmFields.do" method="POST"
 				modelAttribute="film">
+
+				<form:label path="filmId">Film ID (currently ${film.filmId}):</form:label>
+				<%-- <form:input path="filmId" /> --%>
+				<form:errors path="filmId" />
+				<br />
 
 				<form:label path="title">Title:</form:label>
 				<form:input path="title" />
@@ -87,7 +91,8 @@
 				<br />
 
 
-				<input type="submit" value="Submit" />
+				<input type="text" name="filmID" value="${film.filmId}">
+				<input type="submit" value="Update this Film" />
 			</form:form>
 			<%-- </form> --%>
 		</c:if>
