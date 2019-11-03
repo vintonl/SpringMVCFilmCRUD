@@ -53,18 +53,23 @@
 				<tr>
 					<td>Actors:</td>
 					<td><c:if test="${empty film.actors }">No actors found</c:if>
-						<c:if test="${not empty actors}">${actors}</c:if></td>
+						<c:if test="${not empty film.actors}">
+							<c:forEach var="actorsObj" items="${actors}">
+								<c:out value="${actorsObj.firstName }"></c:out>
+								<c:out value="${actorsObj.lastName }"></c:out>
+							</c:forEach>
+						</c:if>
+					</td>
 				</tr>
 			</table>
 
 			<form action="getFilmFields.do" method="GET">
-				<input type="text" name="filmID" value="${film.filmId}">
-				<input type="submit" value="Update Film Attributes" />
+				<input type="text" name="filmID" value="${film.filmId}"> <input
+					type="submit" value="Update Film Attributes" />
 			</form>
 			<form action="deleteFilm.do" method="POST">
-				<input type="text"
-					name="filmID" value="${film.filmId}"> <input type="submit"
-					value="Delete this Film" />
+				<input type="text" name="filmID" value="${film.filmId}"> <input
+					type="submit" value="Delete this Film" />
 			</form>
 		</c:if>
 
