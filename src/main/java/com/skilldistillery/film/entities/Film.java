@@ -241,7 +241,7 @@ public class Film {
 		builder.append("Film ID: ").append(filmId).append("\nTitle: ").append(title).append("\nRelease Year: ")
 				.append(releaseYear).append("\nRating: ").append(rating).append("\nDescription: ").append(description)
 				.append("\nLanguage: ").append(languageID).append("\nSpecial Features: ")
-				.append(specialFeatures);
+				.append(specialFeatures).append("\nActors: ").append(actors);
 		return builder.toString();
 	}
 
@@ -253,7 +253,7 @@ public class Film {
 				.append("\nRental Duration: ").append(rentalDuration)
 				.append(" days\nLength: ").append(length).append(" minutes\nRate: $").append(rate).append("\nReplacement Cost: $")
 				.append(replacementCost).append("\nRating: ").append(rating).append("\nSpecial Features: ")
-				.append(specialFeatures);
+				.append(specialFeatures).append("\nActors: ").append(actors);
 		return builder.toString();
 	}
 
