@@ -373,5 +373,30 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return film;
 	}
+	
+	@Override
+	public Category findCategoryByFilmId(int filmId) {
+		Category cat = null;
+
+		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);) {
+			String sql = "SELECT actor.id, actor.first_name, actor.last_name \n" + "FROM actor LEFT JOIN film_actor \n"
+					+ "ON actor.id = film_actor.actor_id \n" + "LEFT JOIN film ON film_actor.film_id = film.id \n"
+					+ "WHERE film.id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet catResult = stmt.executeQuery();
+			while (catResult.next()) {
+				cat = new Category();
+
+				cat.setId(catResult.getInt("category.id"));
+				cat.setName();
+			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return cat;
+	}
 
 }
