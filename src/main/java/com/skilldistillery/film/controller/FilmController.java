@@ -90,8 +90,8 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		
 		Film updatedFilm = filmDao.saveFilmAllFields(filmID, film);
-		
-		mv.addObject("film", updatedFilm);
+		Film display = filmDao.findFilmById(filmID);
+		mv.addObject("film", display);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
