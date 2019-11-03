@@ -52,11 +52,13 @@
 						<c:if test="${not empty actors}">${actors}</c:if></td>
 				</tr>
 			</table>
+			<form action="deleteFilm.do" method="POST">
+				(Delete this film by re-entering Film ID) <input type="text" name="filmID"
+					value="Film ID" > <input type="submit" value="Delete this Film" />
+			</form>
 		</c:if>
-		<p>
-			<a href="deleteFilm.do" class="btn btn-secondary" role="button">(Delete this film)</a>
-		</p>
-		</br>
+
+		<br>
 		<p>
 			<a href="home.do" class="btn btn-secondary" role="button">Back to
 				Home</a>

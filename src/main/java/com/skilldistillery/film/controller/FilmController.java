@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.database.DatabaseAccessorObject;
@@ -59,13 +60,15 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "deleteFilm.do", params = "film", method = RequestMethod.GET)
-	public ModelAndView deleteFilmFromSearch(@Valid Film film) {
+	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.POST)
+	public ModelAndView deleteFilmFromSearch(@RequestParam("filmID") int filmID) {
 		
-		boolean delete = filmDao.deleteFilm(film);
+		boolean delete = filmDao.deleteFilm(filmID);
+		
 		System.out.println("*************");
 		System.out.println(delete);
 		System.out.println("*************");
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home.do"); 
 		return mv;
