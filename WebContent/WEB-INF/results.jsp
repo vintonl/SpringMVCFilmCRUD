@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Search Film Results</title>
+<title>Film Results</title>
 </head>
 <body>
-	<h1>Search Film Results</h1>
+	<h1>Film Results</h1>
 	<div class="container">
 		<c:out value="${filmId }" />
 		<c:if test="${empty film.title }">No film found</c:if>

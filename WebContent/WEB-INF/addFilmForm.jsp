@@ -9,6 +9,7 @@
 <title>Add Film</title>
 </head>
 <body>
+<h1>Add a film to the database</h1>
 	<form:form action="addFilmNew.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
 		<form:input path="title" />
