@@ -15,6 +15,7 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
+	private String categoryFilm;
 	private List<Actor> actors;
 
 	public Film() {
@@ -51,6 +52,14 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
+	}
+
+	public String getCategoryFilm() {
+		return categoryFilm;
+	}
+
+	public void setCategoryFilm(String categoryFilm) {
+		this.categoryFilm = categoryFilm;
 	}
 
 	public int getFilmId() {
@@ -240,8 +249,8 @@ public class Film {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Film ID: ").append(filmId).append("\nTitle: ").append(title).append("\nRelease Year: ")
 				.append(releaseYear).append("\nRating: ").append(rating).append("\nDescription: ").append(description)
-				.append("\nLanguage: ").append(languageID).append("\nSpecial Features: ")
-				.append(specialFeatures).append("\nActors: ").append(actors);
+				.append("\nLanguage: ").append(languageID).append("\nSpecial Features: ").append(specialFeatures)
+				.append("\nActors: ").append(actors).append("\nCategories: ").append(categoryFilm);
 		return builder.toString();
 	}
 
@@ -249,11 +258,12 @@ public class Film {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("FilmId: ").append(filmId).append("\nTitle: ").append(title).append("\nDescription: ")
-				.append(description).append("\nRelease Year: ").append(releaseYear).append("\nLanguage: ").append(languageID)
-				.append("\nRental Duration: ").append(rentalDuration)
-				.append(" days\nLength: ").append(length).append(" minutes\nRate: $").append(rate).append("\nReplacement Cost: $")
+				.append(description).append("\nRelease Year: ").append(releaseYear).append("\nLanguage: ")
+				.append(languageID).append("\nRental Duration: ").append(rentalDuration).append(" days\nLength: ")
+				.append(length).append(" minutes\nRate: $").append(rate).append("\nReplacement Cost: $")
 				.append(replacementCost).append("\nRating: ").append(rating).append("\nSpecial Features: ")
-				.append(specialFeatures).append("\nActors: ").append(actors);
+				.append(specialFeatures).append("\nActors: ").append(actors).append("\nCategories: ")
+				.append(categoryFilm);
 		return builder.toString();
 	}
 
