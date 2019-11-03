@@ -22,6 +22,6 @@ public interface DatabaseAccessor {
 	
 	public Film createFilm(Film film);
 
-	Category findCategoryByFilmId(int filmId);
+	String findCategoryByFilmId(int filmId);
 
 }

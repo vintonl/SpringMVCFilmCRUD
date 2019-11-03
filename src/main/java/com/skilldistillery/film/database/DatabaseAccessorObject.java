@@ -57,6 +57,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setRating(filmResult.getString("film.rating"));
 				film.setSpecialFeatures(filmResult.getString("film.special_features"));
 				film.setActors(findActorsByFilmId(film.getFilmId()));
+				film.setCategoryFilm(findCategoryByFilmId(film.getFilmId()));
 			}
 			filmResult.close();
 			stmt.close();
@@ -96,6 +97,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film.setRating(filmResult.getString("film.rating"));
 				film.setSpecialFeatures(filmResult.getString("film.special_features"));
 				film.setActors(findActorsByFilmId(film.getFilmId()));
+				film.setCategoryFilm(findCategoryByFilmId(film.getFilmId()));
 
 				films.add(film);
 			}
@@ -376,12 +378,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 	
 	@Override
-	public Category findCategoryByFilmId(int filmId) {
+	public String findCategoryByFilmId(int filmId) {
 		Category cat = null;
 
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);) {
-			String sql = "SELECT actor.id, actor.first_name, actor.last_name \n" + "FROM actor LEFT JOIN film_actor \n"
-					+ "ON actor.id = film_actor.actor_id \n" + "LEFT JOIN film ON film_actor.film_id = film.id \n"
+			String sql = "SELECT category.id, category.name \n" + "FROM category LEFT JOIN film_category \n"
+					+ "ON category.id = film_category.category_id \n" + "LEFT JOIN film ON film_category.film_id = film.id \n"
 					+ "WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
@@ -397,7 +399,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			e.printStackTrace();
 		}
 
-		return cat;
+		return cat.getName();
 	}
 
 }

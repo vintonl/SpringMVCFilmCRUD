@@ -51,6 +51,10 @@
 					<td>${film.specialFeatures}</td>
 				</tr>
 				<tr>
+					<td>Category:</td>
+					<td>${film.categoryFilm}</td>
+				</tr>
+				<tr>
 					<td>Actors:</td>
 					<td><c:if test="${empty film.actors }">No actors found</c:if>
 						<c:if test="${not empty actors}">${actors}</c:if></td>
