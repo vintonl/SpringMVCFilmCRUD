@@ -14,47 +14,66 @@
 		<form:input path="title" />
 		<form:errors path="title" />
 		<br />
+
 		<form:label path="description">Description:</form:label>
 		<form:input path="description" />
 		<form:errors path="description" />
 		<br />
+
 		<form:label path="releaseYear">ReleaseYear:</form:label>
 		<form:input path="releaseYear" />
 		<form:errors path="releaseYear" />
 		<br />
+
+		<form:label path="languageID">Language:</form:label>
 		<form:select path="languageID">Language:
-<form:option value="1">English</form:option>
+			<form:option value="1">English</form:option>
 			<form:option value="2">Italian</form:option>
 			<form:option value="3">Japanese</form:option>
 			<form:option value="4">Mandarin</form:option>
 			<form:option value="5">French</form:option>
 			<form:option value="6">German</form:option>
 		</form:select>
+		<br />
+		
 		<form:label path="rentalDuration">RentalDuration:</form:label>
 		<form:input path="rentalDuration" />
 		<form:errors path="rentalDuration" />
 		<br />
+
 		<form:label path="length">Length:</form:label>
 		<form:input path="length" />
 		<form:errors path="length" />
 		<br />
+
 		<form:label path="replacementCost">ReplacementCost:</form:label>
 		<form:input path="replacementCost" />
 		<form:errors path="replacementCost" />
 		<br />
+
 		<form:label path="rating">Rating:</form:label>
-		<form:input path="rating" />
-		<form:errors path="rating" />
+		<form:select path="rating">Rating:
+			<form:option value="G">G</form:option>
+			<form:option value="PG">PG</form:option>
+			<form:option value="PG-13">PG-13</form:option>
+			<form:option value="R">R</form:option>
+			<form:option value="NC-17">NC-17</form:option>
+			<form:option value="n/a">n/a</form:option>
+		</form:select>
 		<br />
+		
+		<form:label path="specialFeatures">Special Features:</form:label>
 		<form:select path="specialFeatures">Special Features:
 		   <form:option value="Trailers">Trailers</form:option>
 			<form:option value="Commentaries">Commentaries</form:option>
 			<form:option value="Deleted Scenes">Deleted Scenes</form:option>
 			<form:option value="Behind The Scenes">Behind the Scenes</form:option>
-			<form:option value="None">None</form:option>
+			<form:option value="n/a">n/a</form:option>
 		</form:select>
 		<br />
+		
 		<input type="submit" value="Submit" />
 	</form:form>
+	
 </body>
 </html>
