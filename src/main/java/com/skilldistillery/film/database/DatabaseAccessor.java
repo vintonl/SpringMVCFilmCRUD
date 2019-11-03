@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Category;
 import com.skilldistillery.film.entities.Film;
 
 
@@ -20,5 +21,7 @@ public interface DatabaseAccessor {
 	public List<Film> findFilmsByActorId(int actorId);
 	
 	public Film createFilm(Film film);
+
+	Category findCategoryByFilmId(int filmId);
 
 }

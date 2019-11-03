@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Category;
 import com.skilldistillery.film.entities.Film;
 
 @Component
@@ -389,7 +390,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				cat = new Category();
 
 				cat.setId(catResult.getInt("category.id"));
-				cat.setName();
+				cat.setName(catResult.getString("category.name"));
 			
 			}
 		} catch (SQLException e) {
