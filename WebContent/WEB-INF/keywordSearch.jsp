@@ -17,6 +17,10 @@
 			<h2>Title: ${film.title }</h2>
 			<table>
 				<tr>
+					<td>Film ID:</td>
+					<td>${film.filmId}</td>
+				</tr>
+				<tr>
 					<td>Film Description:</td>
 					<td>${film.description}</td>
 				</tr>
@@ -42,10 +46,6 @@
 						</tr>
 					</c:otherwise>
 				</c:choose>
-				<tr>
-					<td>Film ID:</td>
-					<td>${film.filmId}</td>
-				</tr>
 				<tr>
 					<td>Special Features:</td>
 					<td>${film.specialFeatures}</td>
