@@ -47,14 +47,24 @@
 					<td>${film.filmId}</td>
 				</tr>
 				<tr>
+					<td>Special Features:</td>
+					<td>${film.specialFeatures}</td>
+				</tr>
+				<tr>
 					<td>Actors:</td>
 					<td><c:if test="${empty film.actors }">No actors found</c:if>
 						<c:if test="${not empty actors}">${actors}</c:if></td>
 				</tr>
 			</table>
+
+			<form action="getFilmFields.do" method="POST">
+				Update Film <input type="text" name="filmID" value="${film.filmId}">
+				<input type="submit" value="Update Film Attributes" />
+			</form>
 			<form action="deleteFilm.do" method="POST">
-				(Delete this film by re-entering Film ID) <input type="text" name="filmID"
-					value="Film ID" > <input type="submit" value="Delete this Film" />
+				<input type="text"
+					name="filmID" value="${film.filmId}"> <input type="submit"
+					value="Delete this Film" />
 			</form>
 		</c:if>
 
