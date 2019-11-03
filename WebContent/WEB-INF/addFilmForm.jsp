@@ -64,6 +64,7 @@
 		<br />
 
 		<form:label path="specialFeatures">Special Features:</form:label>
+		<br>
 		<form:select multiple="true" path="specialFeatures">Special Features:
 		   <form:option value="Trailers">Trailers</form:option>
 			<form:option value="Commentaries">Commentaries</form:option>
