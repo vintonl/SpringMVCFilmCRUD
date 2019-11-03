@@ -304,7 +304,48 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			String sql = "UPDATE film SET film.title = ? WHERE film.id = ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
-			stmt.setInt(1, film.getFilmId());
+			stmt.setInt(2, film.getFilmId());
+
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+				conn.commit(); // COMMIT TRANSACTION
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
+	public boolean saveFilmAllFields(Film film) {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			conn.setAutoCommit(false); // START TRANSACTION
+//			String sql = "UPDATE film SET film.title = ? WHERE film.id = ?;";
+			String sql = "UPDATE film SET title = ?, description = ?, release_year = ?, language_id = ?,"
+					+ "rental_duration = ?, rental_rate = ?, length = ?, replacement_cost = ?, rating = ?, special_features = ?\n"
+					+ "WHERE film.id = ?;";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, film.getLanguageID());
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacementCost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecialFeatures());
+			stmt.setInt(11, film.getFilmId()); // TODO check this?
 
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
