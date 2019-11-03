@@ -20,7 +20,7 @@
 		<form:errors path="description" />
 		<br />
 
-		<form:label path="releaseYear">ReleaseYear:</form:label>
+		<form:label path="releaseYear">Release Year:</form:label>
 		<form:input path="releaseYear" />
 		<form:errors path="releaseYear" />
 		<br />
@@ -46,7 +46,7 @@
 		<form:errors path="length" />
 		<br />
 
-		<form:label path="replacementCost">ReplacementCost:</form:label>
+		<form:label path="replacementCost">Replacement Cost:</form:label>
 		<form:input path="replacementCost" />
 		<form:errors path="replacementCost" />
 		<br />
