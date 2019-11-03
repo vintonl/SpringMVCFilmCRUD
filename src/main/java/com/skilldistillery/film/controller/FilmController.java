@@ -1,11 +1,13 @@
 package com.skilldistillery.film.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,51 +52,41 @@ public class FilmController {
 		mv.setViewName("WEB-INF/addFilmForm.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "addFilmNew.do", method = RequestMethod.POST)
 	public ModelAndView newFilm(@Valid Film film) {
 		Film newFilm = filmDao.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("film", newFilm); 
-		mv.setViewName("WEB-INF/searchFilmByID.jsp"); 
+		mv.addObject("film", newFilm);
+		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.POST)
 	public ModelAndView deleteFilmFromSearch(@RequestParam("filmID") int filmID) {
-		
+
 		boolean delete = filmDao.deleteFilm(filmID);
-		
+
 		System.out.println("*************");
 		System.out.println(delete);
 		System.out.println("*************");
-		
+
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home.do"); 
+		mv.setViewName("home.do");
 		return mv;
 	}
-	
 
+	@RequestMapping(path = "GetFilmFields.do", method = RequestMethod.GET)
+	public ModelAndView getFilmFields(@RequestParam(value = "filmID", defaultValue = "1") int filmID) {
+		ModelAndView mv = new ModelAndView();
 
-//	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET) 
-//	public ModelAndView created() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("WEB-INF/addFilm.jsp");
-//		return mv;
-//	}
+		Film foundFilm = filmDao.findFilmById(filmID);
+		List<Actor> actors = filmDao.findActorsByFilmId(filmID);
+
+		mv.addObject("film", foundFilm);
+		mv.addObject("actors", actors);
+		mv.setViewName("WEB-INF/update.jsp");
+		return mv;
+	}
 
 }
-
-//@RequestMapping(path = "addFilmForm.do", params = { "title", "description", "languageID",
-//"releaseYear" }, method = RequestMethod.GET)
-//public ModelAndView addFilm(String title, String description, int languageID, int release_year) {
-//ModelAndView mv = new ModelAndView();
-//
-//Film newFilm = filmDao.createFilm(title, description, languageID, release_year);
-//
-//mv.addObject("film", newFilm);
-//mv.setViewName("WEB-INF/addFilmForm.jsp");
-//
-//return mv;
-//}
-
