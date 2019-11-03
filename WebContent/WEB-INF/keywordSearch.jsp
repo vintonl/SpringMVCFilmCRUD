@@ -28,13 +28,27 @@
 					<td>Rating:</td>
 					<td>${film.rating}</td>
 				</tr>
-				<tr>
-					<td>Language:</td>
-					<td>${film.language}</td>
-				</tr>
+				<c:choose>
+					<c:when test="${film.languageID eq 0 }">
+						<tr>
+							<td>Language:</td>
+							<td>${film.language}</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td>Language ID:</td>
+							<td>${film.languageID}</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 				<tr>
 					<td>Film ID:</td>
 					<td>${film.filmId}</td>
+				</tr>
+				<tr>
+					<td>Special Features:</td>
+					<td>${film.specialFeatures}</td>
 				</tr>
 				<tr>
 					<td>Actors:</td>
@@ -42,7 +56,19 @@
 						<c:if test="${not empty actors}">${actors}</c:if></td>
 				</tr>
 			</table>
+
+			<form action="getFilmFields.do" method="GET">
+				<input type="text" name="filmID" value="${film.filmId}">
+				<input type="submit" value="Update Film Attributes" />
+			</form>
+			<form action="deleteFilm.do" method="POST">
+				<input type="text"
+					name="filmID" value="${film.filmId}"> <input type="submit"
+					value="Delete this Film" />
+			</form>
 		</c:if>
+
+		<br>
 		<p>
 			<a href="home.do" class="btn btn-secondary" role="button">Back to
 				Home</a>

@@ -67,10 +67,6 @@ public class FilmController {
 
 		boolean delete = filmDao.deleteFilm(filmID);
 
-		System.out.println("*************");
-		System.out.println(delete);
-		System.out.println("*************");
-
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home.do");
 		return mv;
@@ -88,5 +84,40 @@ public class FilmController {
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "saveFilmFields.do",params = "film", method = RequestMethod.POST)
+	public ModelAndView saveFilmFields(@RequestParam("film") Film film) {
+		ModelAndView mv = new ModelAndView();
+		
+		boolean updateFilm = filmDao.saveFilmAllFields(film);
+		
+		mv.addObject("film", updateFilm);
+		mv.setViewName("WEB-INF/searchFilmByID.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "searchKeywordForm.do")
+	public ModelAndView searchFilmByKeyword() {
+		ModelAndView mv = new ModelAndView("WEB-INF/keywordSearchForm.html");
+		return mv;
+	}
+
+	@RequestMapping(path = "searchKeyword.do", params = "keyword", method = RequestMethod.GET)
+	public ModelAndView doKeywordSearch(String keyword) {
+		ModelAndView mv = new ModelAndView();
+
+		List<Film> foundFilms = filmDao.findFilmByKeyword(keyword);
+	//	List<Actor> actors = filmDao.findActorsByFilmId();
+
+		mv.addObject("film", foundFilms);
+	//	mv.addObject("actors", actors);
+		mv.setViewName("WEB-INF/keywordSearch.jsp");
+		return mv;
+	}
+	
+	
+	
+	
+	
 
 }
