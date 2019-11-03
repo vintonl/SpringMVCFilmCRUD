@@ -12,8 +12,6 @@
 <body>
 	<h1>Edit a film to the database</h1>
 	<div class="container">
-		<!-- 	<input type="text" name="filmID" value="" size="4" />
-		<input type="submit" value="Get Film" /> -->
 		<c:out value="${filmId }" />
 		<c:if test="${empty film.title }">No film found</c:if>
 		<c:if test="${not empty film }">
@@ -21,9 +19,7 @@
 			<form:form action="saveFilmFields.do" method="POST"
 				modelAttribute="film">
 
-				<form:label path="filmId">Film ID (currently ${film.filmId}):</form:label>
-				<%-- <form:input path="filmId" /> --%>
-				<form:errors path="filmId" />
+				Film ID: ${film.filmId}
 				<br />
 
 				<form:label path="title">Title:</form:label>
@@ -90,11 +86,9 @@
 				</form:select>
 				<br />
 
-
 				<input type="text" name="filmID" value="${film.filmId}">
 				<input type="submit" value="Update this Film" />
 			</form:form>
-			<%-- </form> --%>
 		</c:if>
 		<br />
 	</div>
