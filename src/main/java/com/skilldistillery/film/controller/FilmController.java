@@ -85,8 +85,8 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "saveFilmFields.do",params = "film", method = RequestMethod.POST)
-	public ModelAndView saveFilmFields(@RequestParam("film") Film film) {
+	@RequestMapping(path = "saveFilmFields.do", method = RequestMethod.POST)
+	public ModelAndView saveFilmFields(@Valid Film film) {
 		ModelAndView mv = new ModelAndView();
 		
 		boolean updateFilm = filmDao.saveFilmAllFields(film);
