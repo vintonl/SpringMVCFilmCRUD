@@ -57,8 +57,8 @@
 				</tr>
 			</table>
 
-			<form action="getFilmFields.do" method="POST">
-				Update Film <input type="text" name="filmID" value="${film.filmId}">
+			<form action="getFilmFields.do" method="GET">
+				<input type="text" name="filmID" value="${film.filmId}">
 				<input type="submit" value="Update Film Attributes" />
 			</form>
 			<form action="deleteFilm.do" method="POST">

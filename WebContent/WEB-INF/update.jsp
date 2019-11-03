@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
@@ -10,18 +11,18 @@
 </head>
 <body>
 	<h1>Edit a film to the database</h1>
-	<form:form action="getFilmFields.do" method="GET">
-		<input type="text" name="filmID" value="" size="4" />
-		<input type="submit" value="Get Film" />
-
-		<c:if test="${not empty film }">
-
-			<form:label path="title">Title:</form:label>
-			<form:input path="title" value="${title}" />
-			<form:errors path="title" />
+	<div class="container">
+	<!-- 	<input type="text" name="filmID" value="" size="4" />
+		<input type="submit" value="Get Film" /> -->
+			<c:out value="${filmId }" />
+			<c:if test="${empty film.title }">No film found</c:if>
+			<c:if test="${not empty film }">
+			<form action="getFilmFields.do" method= "GET">
+			Title:
+			<input type= "text" name="title" value="${film.title}" />
 			<br />
 
-			<form:label path="description">Description:</form:label>
+<%-- 			<form:label path="description">Description:</form:label>
 			<form:input path="description" value="${description}" />
 			<form:errors path="description" />
 			<br />
@@ -29,9 +30,9 @@
 			<form:label path="releaseYear">Release Year:</form:label>
 			<form:input path="releaseYear" value="${releaseYear}" />
 			<form:errors path="releaseYear" />
-			<br />
+			<br /> --%>
 
-			<form:label path="languageID">Language:</form:label>
+	<%-- 		<form:label path="languageID">Language:</form:label>
 			<form:select path="languageID" value="${languageID}">
 			<form:option value="1">English</form:option>
 				<form:option value="2">Italian</form:option>
@@ -40,9 +41,9 @@
 				<form:option value="5">French</form:option>
 				<form:option value="6">German</form:option>
 			</form:select>
-			<br />
+			<br /> --%>
 
-			<form:label path="rentalDuration">Rental Duration:</form:label>
+<%-- 			<form:label path="rentalDuration">Rental Duration:</form:label>
 			<form:input path="rentalDuration" value="${rentalDuration}" />
 			<form:errors path="rentalDuration" />
 			<br />
@@ -76,13 +77,14 @@
 				<form:option value="Behind The Scenes">Behind the Scenes</form:option>
 				<form:option value="n/a">n/a</form:option>
 			</form:select>
-			<br />
+			<br /> --%>
 
+		<%-- 	<form:form action="getFilmFields.do" method="GET"> --%>
 			<input type="submit" value="Submit" />
 
-		</c:if>
-		<br />
-	</form:form>
-
+		</form>  
+		</c:if> 
+<br />
+</div>
 </body>
 </html>

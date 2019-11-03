@@ -76,8 +76,8 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "getFilmFields.do", method = RequestMethod.GET)
-	public ModelAndView getFilmFields(@RequestParam(value = "filmID") int filmID) {
+	@RequestMapping(path = "getFilmFields.do",params = "filmID", method = RequestMethod.GET)
+	public ModelAndView getFilmFields(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
 
 		Film foundFilm = filmDao.findFilmById(filmID);
