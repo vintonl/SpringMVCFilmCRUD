@@ -52,10 +52,21 @@
 					<td>${film.specialFeatures}</td>
 				</tr>
 				<tr>
+					<%-- <td>Actors:</td>
+					<td><c:if test="${empty film.actors }">No actors found</c:if>
+						<c:if test="${not empty film.actors}">
+							<c:forEach var="actorsObj" items="${actors}">
+								<c:out value="${actorsObj.firstName }"></c:out>
+								<c:out value="${actorsObj.lastName }"></c:out>
+							</c:forEach>
+						</c:if>
+					</td> --%>
+					<tr>
 					<td>Actors:</td>
 					<td><c:if test="${empty film.actors }">No actors found</c:if>
-						<c:if test="${not empty actors}">${actors}</c:if></td>
-				</tr>
+						<c:if test="${not empty film.actors}">${film.actors}</c:if></td>
+					</tr>
+				
 			</table>
 
 			<form action="getFilmFields.do" method="GET">

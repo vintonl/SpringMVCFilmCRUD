@@ -77,10 +77,10 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 
 		Film foundFilm = filmDao.findFilmById(filmID);
-		List<Actor> actors = filmDao.findActorsByFilmId(filmID);
+//		List<Actor> actors = filmDao.findActorsByFilmId(filmID);
 
 		mv.addObject("film", foundFilm);
-		mv.addObject("actors", actors);
+	//	mv.addObject("actors", actors);
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
