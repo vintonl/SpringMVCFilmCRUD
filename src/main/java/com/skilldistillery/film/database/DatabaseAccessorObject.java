@@ -220,7 +220,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
-	
+
 	public boolean deleteFilm(int filmID) {
 		Connection conn = null;
 		try {
@@ -294,6 +294,35 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		return film;
 
+	}
+
+	public boolean saveTitle(Film film) {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "UPDATE film SET film.title = ? WHERE film.id = ?;";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setInt(1, film.getFilmId());
+
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+				conn.commit(); // COMMIT TRANSACTION
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
 	}
 
 }
