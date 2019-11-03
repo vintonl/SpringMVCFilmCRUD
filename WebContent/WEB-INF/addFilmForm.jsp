@@ -36,7 +36,7 @@
 		</form:select>
 		<br />
 		
-		<form:label path="rentalDuration">RentalDuration:</form:label>
+		<form:label path="rentalDuration">Rental Duration:</form:label>
 		<form:input path="rentalDuration" />
 		<form:errors path="rentalDuration" />
 		<br />
