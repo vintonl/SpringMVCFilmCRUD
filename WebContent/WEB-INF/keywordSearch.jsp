@@ -11,7 +11,8 @@
 <body>
 	<h1>Film Keyword Search Results</h1>
 	<div class="container">
-		<c:out value="${filmId }" />
+	<c:forEach var="film" items="${films}">
+		<c:out value="${keyword}" />
 		<c:if test="${empty film.title }">No film found</c:if>
 		<c:if test="${not empty film }">
 			<h2>Title: ${film.title }</h2>
@@ -67,6 +68,7 @@
 					value="Delete this Film" />
 			</form>
 		</c:if>
+		</c:forEach>
 
 		<br>
 		<p>

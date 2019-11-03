@@ -72,7 +72,7 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "getFilmFields.do",params = "filmID", method = RequestMethod.GET)
+	@RequestMapping(path = "getFilmFields.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmFields(@RequestParam("filmID") int filmID) {
 		ModelAndView mv = new ModelAndView();
 
@@ -84,40 +84,36 @@ public class FilmController {
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path = "saveFilmFields.do",params = "filmID", method = RequestMethod.POST)
+
+	@RequestMapping(path = "saveFilmFields.do", params = "filmID", method = RequestMethod.POST)
 	public ModelAndView saveFilmFields(@RequestParam("filmID") int filmID, @Valid Film film) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Film updatedFilm = filmDao.saveFilmAllFields(filmID, film);
 		Film display = filmDao.findFilmById(filmID);
 		mv.addObject("film", display);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path = "searchKeywordForm.do")
-	public ModelAndView searchFilmByKeyword() {
-		ModelAndView mv = new ModelAndView("WEB-INF/keywordSearchForm.html");
-		return mv;
-	}
+
+//	@RequestMapping(path = "searchKeywordForm.do")
+//	public ModelAndView searchFilmByKeyword() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("keywordSearchForm.html");
+//		return mv;
+//	}
 
 	@RequestMapping(path = "searchKeyword.do", params = "keyword", method = RequestMethod.GET)
-	public ModelAndView doKeywordSearch(String keyword) {
+	public ModelAndView doKeywordSearch(@RequestParam("keyword") String keyword) {
 		ModelAndView mv = new ModelAndView();
 
 		List<Film> foundFilms = filmDao.findFilmByKeyword(keyword);
 	//	List<Actor> actors = filmDao.findActorsByFilmId();
 
-		mv.addObject("film", foundFilms);
+		mv.addObject("films", foundFilms);
 	//	mv.addObject("actors", actors);
 		mv.setViewName("WEB-INF/keywordSearch.jsp");
 		return mv;
 	}
-	
-	
-	
-	
-	
 
 }
