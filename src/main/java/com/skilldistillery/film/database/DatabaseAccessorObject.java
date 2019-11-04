@@ -324,10 +324,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setString(10, film.getSpecialFeatures());
 			stmt.setInt(11, filmID);
 
-			System.out.println("*****************************************************************");
-			System.out.println(stmt);
-			System.out.println(film.toString());
-
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
 				conn.commit(); // COMMIT TRANSACTION

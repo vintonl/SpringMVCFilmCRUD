@@ -77,22 +77,22 @@
 		<form:label path="categoryFilm">Category:</form:label>
 				<br>
 				<form:select path="categoryFilm">
-					<form:option value="Action">Action</form:option>
-					<form:option value="Animation">Animation</form:option>
-					<form:option value="Children">Children</form:option>
-					<form:option value="Classics">Classics</form:option>
-					<form:option value="Comedy">Comedy</form:option>
-					<form:option value="Documentary">Documentary</form:option>
-					<form:option value="Drama">Drama</form:option>
-					<form:option value="Family">Family</form:option>
-					<form:option value="Foreign">Foreign</form:option>
-					<form:option value="Games">Games</form:option>
-					<form:option value="Horror">Horror</form:option>
-					<form:option value="Music">Music</form:option>
-					<form:option value="New">New</form:option>
-					<form:option value="Sci-Fi">Sci-Fi</form:option>
-					<form:option value="Sports">Sports</form:option>
-					<form:option value="Travel">Travel</form:option>
+					<form:option value="1">Action</form:option>
+					<form:option value="2">Animation</form:option>
+					<form:option value="3">Children</form:option>
+					<form:option value="4">Classics</form:option>
+					<form:option value="5">Comedy</form:option>
+					<form:option value="6">Documentary</form:option>
+					<form:option value="7">Drama</form:option>
+					<form:option value="8">Family</form:option>
+					<form:option value="9">Foreign</form:option>
+					<form:option value="10">Games</form:option>
+					<form:option value="11">Horror</form:option>
+					<form:option value="12">Music</form:option>
+					<form:option value="13">New</form:option>
+					<form:option value="14">Sci-Fi</form:option>
+					<form:option value="15">Sports</form:option>
+					<form:option value="16">Travel</form:option>
 					<form:option value="n/a">n/a</form:option>
 				</form:select>
 				<br />

@@ -14,6 +14,10 @@
 			<h1>Film Created</h1>
 			<table>
 				<tr>
+					<td>Film ID:</td>
+					<td>${film.filmId}</td>
+				</tr>
+				<tr>
 					<td>Film Description:</td>
 					<td>${film.description}</td>
 				</tr>
@@ -30,9 +34,14 @@
 					<td>${film.language}</td>
 				</tr>
 				<tr>
-					<td>Film ID:</td>
-					<td>${film.filmId}</td>
+					<td>Special Features:</td>
+					<td>${film.specialFeatures}</td>
 				</tr>
+				<tr>
+					<td>Category:</td>
+					<td>${film.categoryFilm}</td>
+				</tr>
+				
 			</table>
 		</c:when>
 		<c:otherwise>
