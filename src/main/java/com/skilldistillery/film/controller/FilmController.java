@@ -72,7 +72,9 @@ public class FilmController {
 		boolean delete = filmDao.deleteFilm(filmID);
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home.do");
+		Film foundFilm = filmDao.findFilmById(filmID);
+		mv.addObject("film", foundFilm);
+		mv.setViewName("WEB-INF/deleteResult.jsp");
 		return mv;
 	}
 
