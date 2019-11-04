@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,9 +53,14 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = "addFilmNew.do", method = RequestMethod.POST)
-	public ModelAndView newFilm(@Valid Film film) {
-		Film newFilm = filmDao.createFilm(film);
+	public ModelAndView newFilm(@Valid Film film, Errors errors) {
 		ModelAndView mv = new ModelAndView();
+		Film newFilm = filmDao.createFilm(film);
+		
+		if(newFilm == null) {
+			  errors.rejectValue("title", "error.title", "Title must be 1 to 35 letters long");;
+			}
+		
 		mv.addObject("film", newFilm);
 		mv.setViewName("WEB-INF/searchFilmByID.jsp");
 		return mv;
