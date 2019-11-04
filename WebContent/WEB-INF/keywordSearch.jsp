@@ -67,12 +67,11 @@
 				</table>
 
 				<form action="getFilmFields.do" method="GET">
-					<input type="text" name="filmID" value="${film.filmId}"> <input
-						type="submit" value="Update Film Attributes" />
+					<button type="submit" name="filmID" value="${film.filmId}">Update
+					Film Details</button>
 				</form>
 				<form action="deleteFilm.do" method="POST">
-					<input type="text" name="filmID" value="${film.filmId}"> <input
-						type="submit" value="Delete this Film" />
+					<button type="submit" name="filmID" value="${film.filmId}">Delete Film</button>
 				</form>
 			</c:if>
 		</c:forEach>

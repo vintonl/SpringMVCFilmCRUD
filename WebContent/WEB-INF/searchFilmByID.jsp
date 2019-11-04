@@ -51,19 +51,19 @@
 					<td>${film.specialFeatures}</td>
 				</tr>
 				<tr>
-				<c:choose>
-				<c:when test="${not empty film.categoryFilm }">
-					<td>Category:</td>
-					<td>${film.categoryFilm}</td>
-				</c:when>
-					<c:otherwise>
-					<td>Category:</td>
-					<td>No Category</td>
-					
-				</c:otherwise>
-				
-				
-				</c:choose>
+					<c:choose>
+						<c:when test="${not empty film.categoryFilm }">
+							<td>Category:</td>
+							<td>${film.categoryFilm}</td>
+						</c:when>
+						<c:otherwise>
+							<td>Category:</td>
+							<td>No Category</td>
+
+						</c:otherwise>
+
+
+					</c:choose>
 				</tr>
 				<tr>
 					<td>Actors:</td>
@@ -72,15 +72,15 @@
 				</tr>
 
 			</table>
-
 			<form action="getFilmFields.do" method="GET">
-				<input type="text" name="filmID" value="${film.filmId}"> <input
-					type="submit" value="Update Film Attributes" />
+				<button type="submit" name="filmID" value="${film.filmId}">Update
+					Film Details</button>
 			</form>
 			<form action="deleteFilm.do" method="POST">
-				<input type="text" name="filmID" value="${film.filmId}"> <input
-					type="submit" value="Delete this Film" />
+				<button type="submit" name="filmID" value="${film.filmId}">Delete
+					Film</button>
 			</form>
+
 		</c:if>
 
 		<br>

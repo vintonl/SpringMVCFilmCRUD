@@ -85,9 +85,10 @@
 					<form:option value="n/a">n/a</form:option>
 				</form:select>
 				<br />
-
-				<input type="text" name="filmID" value="${film.filmId}">
-				<input type="submit" value="Update this Film" />
+				<button type="submit" name="filmID" value="${film.filmId}">Update
+					Film Details</button>
+				<%-- <input type="text" name="filmID" value="${film.filmId}">
+				<input type="submit" value="Update this Film" /> --%>
 			</form:form>
 		</c:if>
 		<br />
