@@ -357,9 +357,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			ResultSet catResult = stmt.executeQuery();
 			if (catResult.next()) {
-
 				cat = new Category();
-
 				cat.setId(catResult.getInt("category.id"));
 				cat.setName(catResult.getString("category.name"));
 
