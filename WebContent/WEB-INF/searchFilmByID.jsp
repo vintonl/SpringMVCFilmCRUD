@@ -52,14 +52,15 @@
 				</tr>
 				<tr>
 					<td>Category:</td>
-					<td>${film.categoryFilm}</td>
+					<td><c:if test="${empty film.categoryFilm}">No Category</c:if>
+						<c:if test="${not empty film.categoryFilm}">${film.categoryFilm}</c:if></td>
 				</tr>
 				<tr>
 					<td>Actors:</td>
 					<td><c:if test="${empty film.actors }">No actors found</c:if>
 						<c:if test="${not empty actors}">${actors}</c:if></td>
 				</tr>
-				
+
 			</table>
 
 			<form action="getFilmFields.do" method="GET">

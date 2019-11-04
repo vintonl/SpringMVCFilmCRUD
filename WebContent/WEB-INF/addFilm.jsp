@@ -37,11 +37,7 @@
 					<td>Special Features:</td>
 					<td>${film.specialFeatures}</td>
 				</tr>
-				<tr>
-					<td>Category:</td>
-					<td>${film.categoryFilm}</td>
-				</tr>
-				
+
 			</table>
 		</c:when>
 		<c:otherwise>

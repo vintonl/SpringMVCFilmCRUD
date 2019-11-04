@@ -11,69 +11,70 @@
 <body>
 	<h1>Film Keyword Search Results</h1>
 	<div class="container">
-	<c:forEach var="film" items="${films}">
-		<c:out value="${keyword}" />
-		<c:if test="${empty film.title }">No film found</c:if>
-		<c:if test="${not empty film }">
-			<h2>Title: ${film.title }</h2>
-			<table>
-				<tr>
-					<td>Film ID:</td>
-					<td>${film.filmId}</td>
-				</tr>
-				<tr>
-					<td>Film Description:</td>
-					<td>${film.description}</td>
-				</tr>
-				<tr>
-					<td>Release Year:</td>
-					<td>${film.releaseYear}</td>
-				</tr>
-				<tr>
-					<td>Rating:</td>
-					<td>${film.rating}</td>
-				</tr>
-				<c:choose>
-					<c:when test="${film.languageID eq 0 }">
-						<tr>
-							<td>Language:</td>
-							<td>${film.language}</td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td>Language ID:</td>
-							<td>${film.languageID}</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-				<tr>
-					<td>Special Features:</td>
-					<td>${film.specialFeatures}</td>
-				</tr>
-				<tr>
-					<td>Category:</td>
-					<td>${film.categoryFilm}</td>
-				</tr>
-				<tr>
+		<c:forEach var="film" items="${films}">
+			<c:out value="${keyword}" />
+			<c:if test="${empty film.title }">No film found</c:if>
+			<c:if test="${not empty film }">
+				<h2>Title: ${film.title }</h2>
+				<table>
 					<tr>
-					<td>Actors:</td>
-					<td><c:if test="${empty film.actors }">No actors found</c:if>
-						<c:if test="${not empty film.actors}">${film.actors}</c:if></td>
+						<td>Film ID:</td>
+						<td>${film.filmId}</td>
 					</tr>
-				
-			</table>
+					<tr>
+						<td>Film Description:</td>
+						<td>${film.description}</td>
+					</tr>
+					<tr>
+						<td>Release Year:</td>
+						<td>${film.releaseYear}</td>
+					</tr>
+					<tr>
+						<td>Rating:</td>
+						<td>${film.rating}</td>
+					</tr>
+					<c:choose>
+						<c:when test="${film.languageID eq 0 }">
+							<tr>
+								<td>Language:</td>
+								<td>${film.language}</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td>Language ID:</td>
+								<td>${film.languageID}</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+					<tr>
+						<td>Special Features:</td>
+						<td>${film.specialFeatures}</td>
+					</tr>
 
-			<form action="getFilmFields.do" method="GET">
-				<input type="text" name="filmID" value="${film.filmId}">
-				<input type="submit" value="Update Film Attributes" />
-			</form>
-			<form action="deleteFilm.do" method="POST">
-				<input type="text"
-					name="filmID" value="${film.filmId}"> <input type="submit"
-					value="Delete this Film" />
-			</form>
-		</c:if>
+					<tr>
+						<td>Category:</td>
+						<td><c:if test="${empty film.categoryFilm}">No Category</c:if>
+							<c:if test="${not empty film.categoryFilm}">${film.categoryFilm}</c:if></td>
+					</tr>
+
+					<tr>
+						<td>Actors:</td>
+						<td><c:if test="${empty film.actors }">No actors found</c:if>
+							<c:if test="${not empty film.actors}">${film.actors}</c:if></td>
+					</tr>
+
+				</table>
+
+				<form action="getFilmFields.do" method="GET">
+					<input type="text" name="filmID" value="${film.filmId}"> <input
+						type="submit" value="Update Film Attributes" />
+				</form>
+				<form action="deleteFilm.do" method="POST">
+					<input type="text" name="filmID" value="${film.filmId}"> <input
+						type="submit" value="Delete this Film" />
+				</form>
+			</c:if>
 		</c:forEach>
 
 		<br>

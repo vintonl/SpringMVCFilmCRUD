@@ -74,29 +74,6 @@
 		</form:select>
 		<br />
 		
-		<form:label path="categoryFilm">Category:</form:label>
-				<br>
-				<form:select path="categoryFilm">
-					<form:option value="1">Action</form:option>
-					<form:option value="2">Animation</form:option>
-					<form:option value="3">Children</form:option>
-					<form:option value="4">Classics</form:option>
-					<form:option value="5">Comedy</form:option>
-					<form:option value="6">Documentary</form:option>
-					<form:option value="7">Drama</form:option>
-					<form:option value="8">Family</form:option>
-					<form:option value="9">Foreign</form:option>
-					<form:option value="10">Games</form:option>
-					<form:option value="11">Horror</form:option>
-					<form:option value="12">Music</form:option>
-					<form:option value="13">New</form:option>
-					<form:option value="14">Sci-Fi</form:option>
-					<form:option value="15">Sports</form:option>
-					<form:option value="16">Travel</form:option>
-					<form:option value="n/a">n/a</form:option>
-				</form:select>
-				<br />
-
 		<input type="submit" value="Submit" />
 	</form:form>
 
