@@ -12,7 +12,7 @@
 	<h1>Search Film Results</h1>
 	<div class="container">
 		<c:out value="${filmId }" />
-		<c:if test="${empty film.title }">No film found</c:if>
+		<c:if test="${empty film }">No film found</c:if>
 		<c:if test="${not empty film }">
 			<h2>Title: ${film.title }</h2>
 			<table>
