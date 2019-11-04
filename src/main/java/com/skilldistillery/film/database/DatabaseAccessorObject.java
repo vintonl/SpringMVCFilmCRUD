@@ -354,8 +354,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					+ "LEFT JOIN film ON film_category.film_id = film.id \n" + "WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
-			System.out.println("**************");
-			System.out.println(stmt);
+
 			ResultSet catResult = stmt.executeQuery();
 			if (catResult.next()) {
 
