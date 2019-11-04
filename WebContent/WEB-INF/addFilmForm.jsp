@@ -56,9 +56,9 @@
 		<form:select path="rating">Rating:
 			<form:option value="G">G</form:option>
 			<form:option value="PG">PG</form:option>
-			<form:option value="PG-13">PG-13</form:option>
+			<form:option value="PG13">PG-13</form:option>
 			<form:option value="R">R</form:option>
-			<form:option value="NC-17">NC-17</form:option>
+			<form:option value="NC17">NC-17</form:option>
 			<form:option value="n/a">n/a</form:option>
 		</form:select>
 		<br />
@@ -73,6 +73,29 @@
 			<form:option value="n/a">n/a</form:option>
 		</form:select>
 		<br />
+		
+		<form:label path="categoryFilm">Category:</form:label>
+				<br>
+				<form:select path="categoryFilm">
+					<form:option value="Action">Action</form:option>
+					<form:option value="Animation">Animation</form:option>
+					<form:option value="Children">Children</form:option>
+					<form:option value="Classics">Classics</form:option>
+					<form:option value="Comedy">Comedy</form:option>
+					<form:option value="Documentary">Documentary</form:option>
+					<form:option value="Drama">Drama</form:option>
+					<form:option value="Family">Family</form:option>
+					<form:option value="Foreign">Foreign</form:option>
+					<form:option value="Games">Games</form:option>
+					<form:option value="Horror">Horror</form:option>
+					<form:option value="Music">Music</form:option>
+					<form:option value="New">New</form:option>
+					<form:option value="Sci-Fi">Sci-Fi</form:option>
+					<form:option value="Sports">Sports</form:option>
+					<form:option value="Travel">Travel</form:option>
+					<form:option value="n/a">n/a</form:option>
+				</form:select>
+				<br />
 
 		<input type="submit" value="Submit" />
 	</form:form>
