@@ -51,9 +51,19 @@
 					<td>${film.specialFeatures}</td>
 				</tr>
 				<tr>
+				<c:choose>
+				<c:when test="${not empty film.categoryFilm }">
 					<td>Category:</td>
-					<td><c:if test="${empty film.categoryFilm}">No Category</c:if>
-						<c:if test="${not empty film.categoryFilm}">${film.categoryFilm}</c:if></td>
+					<td>${film.categoryFilm}</td>
+				</c:when>
+					<c:otherwise>
+					<td>Category:</td>
+					<td>No Category</td>
+					
+				</c:otherwise>
+				
+				
+				</c:choose>
 				</tr>
 				<tr>
 					<td>Actors:</td>

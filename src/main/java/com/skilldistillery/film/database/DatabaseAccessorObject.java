@@ -345,15 +345,20 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public String findCategoryByFilmId(int filmId) {
 		Category cat = null;
-
+		if(filmId > 1000) {
+			return "No category found";
+		}
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);) {
 			String sql = "SELECT category.id, category.name \n" + "FROM category LEFT JOIN film_category \n"
 					+ "ON category.id = film_category.category_id \n"
 					+ "LEFT JOIN film ON film_category.film_id = film.id \n" + "WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
+			System.out.println("**************");
+			System.out.println(stmt);
 			ResultSet catResult = stmt.executeQuery();
-			while (catResult.next()) {
+			if (catResult.next()) {
+
 				cat = new Category();
 
 				cat.setId(catResult.getInt("category.id"));
