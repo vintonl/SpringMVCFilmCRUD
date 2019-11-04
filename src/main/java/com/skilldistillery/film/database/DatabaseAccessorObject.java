@@ -25,9 +25,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			e.printStackTrace();
 		}
 	}
-//	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
+
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
-//	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
 	private static final String USER = "student";
 	private static final String PASS = "student";
 
@@ -68,7 +67,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		return film;
 	}
-	
+
 	@Override
 	public List<Film> findFilmByKeyword(String keyword) {
 		List<Film> films = new ArrayList<>();
@@ -200,7 +199,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return films;
 	}
 
-	public boolean deleteFilm(Film film) {
+	public boolean deleteFilmObj(Film film) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
@@ -224,6 +223,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return true;
 	}
 
+	@Override
 	public boolean deleteFilm(int filmID) {
 		Connection conn = null;
 		try {
@@ -299,35 +299,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	}
 
-//	public boolean saveTitle(Film film) {
-//		Connection conn = null;
-//		try {
-//			conn = DriverManager.getConnection(URL, USER, PASS);
-//			conn.setAutoCommit(false); // START TRANSACTION
-//			String sql = "UPDATE film SET film.title = ? WHERE film.id = ?;";
-//			PreparedStatement stmt = conn.prepareStatement(sql);
-//			stmt.setString(1, film.getTitle());
-//			stmt.setInt(2, film.getFilmId());
-//
-//			int updateCount = stmt.executeUpdate();
-//			if (updateCount == 1) {
-//				conn.commit(); // COMMIT TRANSACTION
-//			}
-//		} catch (SQLException sqle) {
-//			sqle.printStackTrace();
-//			if (conn != null) {
-//				try {
-//					conn.rollback();
-//				} // ROLLBACK TRANSACTION ON ERROR
-//				catch (SQLException sqle2) {
-//					System.err.println("Error trying to rollback");
-//				}
-//			}
-//			return false;
-//		}
-//		return true;
-//	}
-
+	@Override
 	public Film saveFilmAllFields(int filmID, Film film) {
 		Connection conn = null;
 		try {
@@ -339,9 +311,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					+ "WHERE film.id = ?;";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			
-			
+
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -357,8 +327,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			System.out.println("*****************************************************************");
 			System.out.println(stmt);
 			System.out.println(film.toString());
-			
-			
+
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
 				conn.commit(); // COMMIT TRANSACTION
@@ -376,15 +345,15 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return film;
 	}
-	
+
 	@Override
 	public String findCategoryByFilmId(int filmId) {
 		Category cat = null;
 
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);) {
 			String sql = "SELECT category.id, category.name \n" + "FROM category LEFT JOIN film_category \n"
-					+ "ON category.id = film_category.category_id \n" + "LEFT JOIN film ON film_category.film_id = film.id \n"
-					+ "WHERE film.id = ?";
+					+ "ON category.id = film_category.category_id \n"
+					+ "LEFT JOIN film ON film_category.film_id = film.id \n" + "WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet catResult = stmt.executeQuery();
@@ -393,7 +362,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 				cat.setId(catResult.getInt("category.id"));
 				cat.setName(catResult.getString("category.name"));
-			
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
