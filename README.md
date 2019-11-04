@@ -18,11 +18,11 @@ On the "Lookup a film" page, the user can choose to:
 1. Search for a film by its ID.
 2. Search the films by keyword or phrase found in the title or description.
 
-The website application will then start the search process of the database and return the result of the search with all of the film's data. The user will then have the option to either update the film's attributes or delete the film from the database or return to the index page.
+The website application will then start the search process of the database and return the result of the search with all of the film's data. The user will then have the option to either update the film's attributes, delete the film from the database, or return to the index page.
 
 ### Technologies used:
 
-Java, Spring, Gradle, SQL, MySQL, Apache, Tomcat, Spring STS, Atom, Git, and Github.
+Java, Spring, Gradle, SQL, MySQL, Apache, Tomcat, AWS, Spring STS, Atom, Git, and Github.
 
 ### Topics implemented:
 
