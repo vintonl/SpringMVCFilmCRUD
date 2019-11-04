@@ -1,13 +1,11 @@
 package com.skilldistillery.film.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,10 +75,8 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 
 		Film foundFilm = filmDao.findFilmById(filmID);
-//		List<Actor> actors = filmDao.findActorsByFilmId(filmID);
 
 		mv.addObject("film", foundFilm);
-	//	mv.addObject("actors", actors);
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
@@ -96,22 +92,13 @@ public class FilmController {
 		return mv;
 	}
 
-//	@RequestMapping(path = "searchKeywordForm.do")
-//	public ModelAndView searchFilmByKeyword() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("keywordSearchForm.html");
-//		return mv;
-//	}
-
 	@RequestMapping(path = "searchKeyword.do", params = "keyword", method = RequestMethod.GET)
 	public ModelAndView doKeywordSearch(@RequestParam("keyword") String keyword) {
 		ModelAndView mv = new ModelAndView();
 
 		List<Film> foundFilms = filmDao.findFilmByKeyword(keyword);
-	//	List<Actor> actors = filmDao.findActorsByFilmId();
 
 		mv.addObject("films", foundFilms);
-	//	mv.addObject("actors", actors);
 		mv.setViewName("WEB-INF/keywordSearch.jsp");
 		return mv;
 	}
