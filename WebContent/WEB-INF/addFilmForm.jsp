@@ -74,9 +74,9 @@
 		</form:select>
 		<br />
 		
-		<form:label path="filmCategory">Category (${film.categoryFilm}):</form:label>
+		<form:label path="categoryFilm">Category:</form:label>
 				<br>
-				<form:select path="filmCategory">
+				<form:select path="categoryFilm">
 					<form:option value="Action">Action</form:option>
 					<form:option value="Animation">Animation</form:option>
 					<form:option value="Children">Children</form:option>
